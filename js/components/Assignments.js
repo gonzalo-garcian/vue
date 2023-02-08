@@ -1,20 +1,17 @@
 import AssignmentList from "/js/components/AssignmentList.js";
+import AssignmentForm from "/js/components/AssignmentForm.js";
 
 export default {
     components: {
         AssignmentList,
+        AssignmentForm
     },
     template: `
     <section class="space-y-6">
         <assignment-list :assignments="filters.inProgress" title="In Progress"></assignment-list>
         <assignment-list :assignments="filters.completed" title="Completed"></assignment-list>
 
-        <form @submit.prevent="add">
-            <div class="border border-gray-600 text-black">
-                <input v-model="newAssignment" type="text" class="p-2">
-                <button type="submit" class="bg-white p-2 border-l"> Add </button>
-            </div>
-        </form>
+        <assignment-form @add="add"></assignment-form>
     </section>
     `,
 
@@ -25,8 +22,6 @@ export default {
                 {name: "Task 2", complete: false, id: 2},
                 {name: "Task 3", complete: false, id: 3}
             ],
-
-            newAssignment: "",
         }
     },
 
@@ -40,14 +35,12 @@ export default {
     },
 
     methods: {
-        add() { 
+        add(name) { 
             this.assignments.push({
-                name: this.newAssignment,
+                name: name,
                 complete: false,
                 id: this.assignments.length + 1,
             });
-
-            this.newAssignment = "";
         }
     }
 }
