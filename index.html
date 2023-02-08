@@ -13,22 +13,27 @@
 <body class="h-screen grid place-items-center">
     <div id="app">
         <app-button>Submit</app-button>
+        <app-button>Hello!</app-button>
     <script>
 
         let app = {
             components: {
                 'app-button': {
-                    mounted() {
-                        alert("Hello World!");
+                    template: `
+                        <button class="bg-gray-200 hover:bg-gray-400 border rounded px-5 py-2 mx-5 disabled:cursor-not-allowed" :disabled="processing">
+                            <slot />    
+                        </button>
+                    `,
+
+                    data() {
+                        return {
+                            processing: true
+                        };
                     }
                 }
             },
 
-            template: `
-                <button class="bg-gray-200 hover:bg-gray-400 border rounded px-5 py-2">
-                    <slot> </slot>    
-                </button>
-            `
+            
         }
 
         Vue.createApp(app).mount('#app');
