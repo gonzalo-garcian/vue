@@ -7,79 +7,31 @@
     <title>Document</title>
 
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
 
-    <style>
-        html, body {
-            height: 100%;
-        }
-
-        body {
-            display: grid;
-            place-items: center;
-        }
-
-        .text-red {
-            color: red;
-        }
-
-        .text-green {
-            color: green;
-        }
-
-    </style>
 </head>
-<body>
+<body class="h-screen grid place-items-center">
     <div id="app">
-
-        <section v-show="inProgress.length">
-            <h2>In progress</h2>
-            <ul>
-                <li v-for="task in inProgress" :key="task.id">
-                    <label>
-                        {{task.name}}
-                        <input type="checkbox" v-model="task.complete">
-                    </label>
-                </li>
-            </ul>
-        </section>
-
-        <section v-show="completed.length">
-            <h2>Completed</h2>
-            <ul>
-                <li v-for="task in completed" :key="task.id">
-                    <label>
-                        {{task.name}}
-                        <input type="checkbox" v-model="task.complete">
-                    </label>
-                </li>
-            </ul>
-        </section>
-    </div>
-    
+        <app-button>Submit</app-button>
     <script>
-        Vue.createApp({
 
-            data () {
-                return {
-                    tasks: [
-                        {name: "Task 1", complete: false, id: 1},
-                        {name: "Task 2", complete: false, id: 2},
-                        {name: "Task 3", complete: false, id: 3}
-                    ]
+        let app = {
+            components: {
+                'app-button': {
+                    mounted() {
+                        alert("Hello World!");
+                    }
                 }
             },
 
-            computed: {
-                completed() {
-                    return this.tasks.filter(t => t.complete);
-                },
+            template: `
+                <button class="bg-gray-200 hover:bg-gray-400 border rounded px-5 py-2">
+                    <slot> </slot>    
+                </button>
+            `
+        }
 
-                inProgress() {
-                    return this.tasks.filter(t => !t.complete)
-                }
-            }
-
-        }).mount('#app');
+        Vue.createApp(app).mount('#app');
     </script>
 </body>
 </html>
