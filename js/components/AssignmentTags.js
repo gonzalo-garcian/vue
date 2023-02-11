@@ -1,7 +1,7 @@
 export default{
     template: `
         <button 
-            @click="$emit('selectTag', tag)"
+            @click="$emit('update:selectedTag', tag)"
             v-for="tag in allTags"
             class="px-2 mx-2 border"
             :class="{
@@ -14,10 +14,6 @@ export default{
         tags: Array,
         selectedTag: String
     },
-
-    emits: [
-        'selectTag'
-    ],
 
     computed:{
         allTags() {
