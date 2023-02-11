@@ -18,9 +18,9 @@ export default {
     data () {
         return {
             assignments: [
-                {name: "Task 1", complete: false, id: 1},
-                {name: "Task 2", complete: false, id: 2},
-                {name: "Task 3", complete: false, id: 3}
+                {name: "Task 1", complete: false, id: 1, tag: 'math'},
+                {name: "Task 2", complete: false, id: 2, tag: 'science'},
+                {name: "Task 3", complete: false, id: 3, tag: 'math'}
             ],
         }
     },
@@ -40,6 +40,7 @@ export default {
                 name: name,
                 complete: false,
                 id: this.assignments.length + 1,
+                tag: 'no tag'
             });
         }
     }
