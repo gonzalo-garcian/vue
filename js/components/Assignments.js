@@ -1,17 +1,17 @@
 import AssignmentList from "/js/components/AssignmentList.js";
-import AssignmentForm from "/js/components/AssignmentForm.js";
+import AssignmentCreate from "/js/components/AssignmentCreate.js";
 
 export default {
     components: {
         AssignmentList,
-        AssignmentForm
+        AssignmentCreate
     },
     template: `
     <section class="space-y-6">
         <assignment-list :assignments="filters.inProgress" title="In Progress"></assignment-list>
         <assignment-list :assignments="filters.completed" title="Completed"></assignment-list>
 
-        <assignment-form @add="add"></assignment-form>
+        <assignment-create @add="add"></assignment-create>
     </section>
     `,
 
