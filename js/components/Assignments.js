@@ -25,6 +25,12 @@ export default {
         }
     },
 
+    created() {
+        fetch("http://localhost:3000/assignments")
+            .then(response => response.json())
+            .then(assignments => this.assignments = assignments)
+    },
+
     computed: {
         filters() {
             return {
