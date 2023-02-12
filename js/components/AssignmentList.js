@@ -7,11 +7,11 @@ export default {
         AssignmentTags
     },
     template: `
-        <section v-show="assignments.length" class="w-60">
+        <section v-show="!closed && assignments.length" class="w-60">
         <div class="flex justify-between items-start">
             <h2 class="font-bold mb-2">{{title}} <span>({{assignments.length}})</span></h2>
 
-            <button>&times;</button>
+            <button @click="closed = true" v-show="toggle">&times;</button>
 
         </div>
             <assignment-tags :tags="assignments.map(a => a.tag)" v-model:selectedTag="selectedTag"/>
@@ -28,12 +28,17 @@ export default {
 
     props: {
         assignments: Array,
-        title: String
+        title: String,
+        toggle: {
+            type: Boolean,
+            default: false
+        }
     },
 
     data() {
         return {
-            selectedTag: 'all'
+            selectedTag: 'all',
+            closed: false
         }
     },
 

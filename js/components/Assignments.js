@@ -11,9 +11,7 @@ export default {
         <assignment-list :assignments="filters.inProgress" title="In Progress">
             <assignment-create @add="add"></assignment-create>
         </assignment-list>
-        <assignment-list :assignments="filters.completed" title="Completed"></assignment-list>
-
-        <!-- <assignment-create @add="add"></assignment-create> -->
+        <assignment-list :assignments="filters.completed" title="Completed" toggle></assignment-list>
     </section>
     `,
 
