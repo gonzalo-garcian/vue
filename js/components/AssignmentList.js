@@ -1,13 +1,15 @@
 import Assignment from "/js/components/Assignment.js";
 import AssignmentTags from "/js/components/AssignmentTags.js";
+import Panel from "./Panel.js";
 
 export default {
     components: {
         Assignment,
-        AssignmentTags
+        AssignmentTags,
+        Panel
     },
     template: `
-        <section v-show="!closed && assignments.length" class="w-60">
+        <panel v-show="!closed && assignments.length" class="w-60">
         <div class="flex justify-between items-start">
             <h2 class="font-bold mb-2">{{title}} <span>({{assignments.length}})</span></h2>
 
@@ -20,10 +22,9 @@ export default {
                 <assignment v-for="assignment in filteredAssignments" :key="assignment.id" :assignment="assignment">
                 
                 </assignment>
-            </ul>
-
-            <slot></slot>
-        </section>
+                <slot></slot>
+            </ul> 
+        </panel>
     `,
 
     props: {
