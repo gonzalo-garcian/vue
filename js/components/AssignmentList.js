@@ -7,16 +7,22 @@ export default {
         AssignmentTags
     },
     template: `
-        <section v-show="assignments.length">
-            <h2 class="font-bold mb-2">{{title}} ({{assignments.length}})</h2>
+        <section v-show="assignments.length" class="w-60">
+        <div class="flex justify-between items-start">
+            <h2 class="font-bold mb-2">{{title}} <span>({{assignments.length}})</span></h2>
 
+            <button>&times;</button>
+
+        </div>
             <assignment-tags :tags="assignments.map(a => a.tag)" v-model:selectedTag="selectedTag"/>
 
-            <ul class="border border-gray-600 divide-y divide-gray-600 mt-3">
+            <ul class="border border-gray-600 divide-y divide-gray-600 mt-5">
                 <assignment v-for="assignment in filteredAssignments" :key="assignment.id" :assignment="assignment">
                 
                 </assignment>
             </ul>
+
+            <slot></slot>
         </section>
     `,
 

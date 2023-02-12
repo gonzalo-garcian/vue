@@ -7,21 +7,19 @@ export default {
         AssignmentCreate
     },
     template: `
-    <section class="space-y-6">
-        <assignment-list :assignments="filters.inProgress" title="In Progress"></assignment-list>
+    <section class="flex gap-8">
+        <assignment-list :assignments="filters.inProgress" title="In Progress">
+            <assignment-create @add="add"></assignment-create>
+        </assignment-list>
         <assignment-list :assignments="filters.completed" title="Completed"></assignment-list>
 
-        <assignment-create @add="add"></assignment-create>
+        <!-- <assignment-create @add="add"></assignment-create> -->
     </section>
     `,
 
     data () {
         return {
-            assignments: [
-                {name: "Task 1", complete: false, id: 1, tag: 'math'},
-                {name: "Task 2", complete: false, id: 2, tag: 'science'},
-                {name: "Task 3", complete: false, id: 3, tag: 'math'}
-            ],
+            assignments: [],
         }
     },
 
