@@ -1,5 +1,5 @@
 <template>
-  <tr>
+  <tr class="bg-gray-800 px-12">
     <td class="text-xl font-medium flex items-center gap-x-4 px-6 py-4">
       <img :src="'https://' + email" alt="" class="rounded-xl" />
       {{ name }}
