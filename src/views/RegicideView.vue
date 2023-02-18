@@ -7,7 +7,7 @@ import { ref, computed, reactive } from "vue";
 let castle = ref(regicide.castle);
 let actualEnemy = castle.value.pop();
 let playedCards = ref([]);
-let discardPile = ref([]);
+let discardPile = ref([{"number": "test", "symbol":"symbol"}]);//ref([]);
 let deck = ref(regicide.deck);
 let hand = ref(regicide.hand);
 
@@ -35,13 +35,17 @@ function lastCardPlayed() {
 }
 
 function hearts() {
-  if (lastCardPlayed.number > discardPile.value.length) {
+    console.log("Hearts")
+    console.log(lastCardPlayed().number)
+    console.log(discardPile.value.length)
+  if (parseInt(lastCardPlayed().number) > discardPile.value.length) {
     discardPile.value = discardPile.value.reverse();
     deck.value = discardPile.value.concat(deck.value);
     discardPile.value = [];
   } else {
+    console.log("Enough to draw");
     deck.value = discardPile.value
-      .splice(-lastCardPlayed.number, lastCardPlayed.number)
+      .splice(-lastCardPlayed().number, lastCardPlayed().number)
       .reverse()
       .concat(deck.value);
   }
