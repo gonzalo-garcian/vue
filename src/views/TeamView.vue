@@ -1,6 +1,6 @@
 <script setup>
 import TeamMember from "@/components/teams/TeamMember.vue";
-import team from "@/team.json";
+import team from "@/db/team.json";
 </script>
 <template>
   <div class="place-self-center flex flex-col gap-y-3" style="width: 725px">

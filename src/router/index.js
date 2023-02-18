@@ -40,6 +40,11 @@ const router = createRouter({
       // which is lazy-loaded when the route is visited.
       component: () => import("../views/TeamView.vue"),
     },
+    {
+      path: "/regicide",
+      name: "regicide",
+      component: () => import("@/views/RegicideView.vue"),
+    }
   ],
 });
 

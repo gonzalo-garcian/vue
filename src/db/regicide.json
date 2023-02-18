@@ -1,0 +1,223 @@
+{
+    "hand": [],
+    "deck": [
+        {
+            "number": "A",
+            "symbol": "♠"
+        },
+        {
+            "number": "A",
+            "symbol": "♥"
+        },
+        {
+            "number": "A",
+            "symbol": "♦"
+        },
+        {
+            "number": "A",
+            "symbol": "♣"
+        },
+        {
+            "number": "2",
+            "symbol": "♠"
+        },
+        {
+            "number": "2",
+            "symbol": "♥"
+        },
+        {
+            "number": "2",
+            "symbol": "♦"
+        },
+        {
+            "number": "2",
+            "symbol": "♣"
+        },
+        {
+            "number": "3",
+            "symbol": "♠"
+        },
+        {
+            "number": "3",
+            "symbol": "♥"
+        },
+        {
+            "number": "3",
+            "symbol": "♦"
+        },
+        {
+            "number": "3",
+            "symbol": "♣"
+        },
+        {
+            "number": "4",
+            "symbol": "♠"
+        },
+        {
+            "number": "4",
+            "symbol": "♥"
+        },
+        {
+            "number": "4",
+            "symbol": "♦"
+        },
+        {
+            "number": "4",
+            "symbol": "♣"
+        },
+        {
+            "number": "5",
+            "symbol": "♠"
+        },
+        {
+            "number": "5",
+            "symbol": "♥"
+        },
+        {
+            "number": "5",
+            "symbol": "♦"
+        },
+        {
+            "number": "5",
+            "symbol": "♣"
+        },
+        {
+            "number": "6",
+            "symbol": "♠"
+        },
+        {
+            "number": "6",
+            "symbol": "♥"
+        },
+        {
+            "number": "6",
+            "symbol": "♦"
+        },
+        {
+            "number": "6",
+            "symbol": "♣"
+        },
+        {
+            "number": "7",
+            "symbol": "♠"
+        },
+        {
+            "number": "7",
+            "symbol": "♥"
+        },
+        {
+            "number": "7",
+            "symbol": "♦"
+        },
+        {
+            "number": "7",
+            "symbol": "♣"
+        },
+        {
+            "number": "8",
+            "symbol": "♠"
+        },
+        {
+            "number": "8",
+            "symbol": "♥"
+        },
+        {
+            "number": "8",
+            "symbol": "♦"
+        },
+        {
+            "number": "8",
+            "symbol": "♣"
+        },
+        {
+            "number": "9",
+            "symbol": "♠"
+        },
+        {
+            "number": "9",
+            "symbol": "♥"
+        },
+        {
+            "number": "9",
+            "symbol": "♦"
+        },
+        {
+            "number": "9",
+            "symbol": "♣"
+        },
+        {
+            "number": "10",
+            "symbol": "♠"
+        },
+        {
+            "number": "10",
+            "symbol": "♥"
+        },
+        {
+            "number": "10",
+            "symbol": "♦"
+        },
+        {
+            "number": "10",
+            "symbol": "♣"
+        }
+    ],
+    "castle": [
+        {
+            "number": "Q",
+            "symbol": "♠"
+        },
+        {
+            "number": "Q",
+            "symbol": "♥"
+        },
+        {
+            "number": "Q",
+            "symbol": "♦"
+        },
+        {
+            "number": "Q",
+            "symbol": "♣"
+        },
+        {
+            "number": "K",
+            "symbol": "♠"
+        },
+        {
+            "number": "K",
+            "symbol": "♥"
+        },
+        {
+            "number": "K",
+            "symbol": "♦"
+        },
+        {
+            "number": "K",
+            "symbol": "♣"
+        },
+        {
+            "number": "J",
+            "symbol": "♠",
+            "hp": 20,
+            "attack": 10
+        },
+        {
+            "number": "J",
+            "symbol": "♥",
+            "hp": 20,
+            "attack": 10
+        },
+        {
+            "number": "J",
+            "symbol": "♦",
+            "hp": 20,
+            "attack": 10
+        },
+        {
+            "number": "J",
+            "symbol": "♣",
+            "hp": 20,
+            "attack": 10
+        }
+    ]
+}
