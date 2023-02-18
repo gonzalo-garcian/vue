@@ -2,22 +2,6 @@
     "hand": [],
     "deck": [
         {
-            "number": "A",
-            "symbol": "♠"
-        },
-        {
-            "number": "A",
-            "symbol": "♥"
-        },
-        {
-            "number": "A",
-            "symbol": "♦"
-        },
-        {
-            "number": "A",
-            "symbol": "♣"
-        },
-        {
             "number": "2",
             "symbol": "♠"
         },
