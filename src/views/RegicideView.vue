@@ -34,8 +34,39 @@ function lastCardPlayed() {
     : { number: "", symbol: "" };
 }
 
+function hearts() {
+  if (lastCardPlayed.number > discardPile.value.length) {
+    discardPile.value = discardPile.value.reverse();
+    deck.value = discardPile.value.concat(deck.value);
+    discardPile.value = [];
+  } else {
+    deck.value = discardPile.value
+      .splice(-lastCardPlayed.number, lastCardPlayed.number)
+      .reverse()
+      .concat(deck.value);
+  }
+}
+
+function diamonds(){
+
+}
+
+function clovers(){
+
+}
+
+function pikes(){
+
+}
+
 function move() {
-    
+  let symbols = {
+    "♥": hearts(),
+    "♦": diamonds(),
+    "♣": clovers(),
+    "♠": pikes(),
+  };
+  symbols[lastCardPlayed.symbol];
 }
 
 function onDrop(evt) {
@@ -44,11 +75,10 @@ function onDrop(evt) {
     hand.value.findIndex((item) => item.number + item.symbol === itemId),
     1
   );
-  console.log(cardTransfer)
-  playedCards.value = playedCards.value.concat(cardTransfer)
+  console.log(cardTransfer);
+  playedCards.value = playedCards.value.concat(cardTransfer);
   move();
 }
-
 </script>
 
 <template>
