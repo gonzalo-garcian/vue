@@ -28,6 +28,10 @@ function draw(n) {
   //playedCards.value = playedCards.value.concat(deck.value.pop());
 }
 
+function doDmg() {
+  actualEnemy.hp -= lastCardPlayed().number;
+}
+
 function lastCardPlayed() {
   return playedCards.value.length > 0
     ? playedCards.value.at(-1)
@@ -56,7 +60,7 @@ function diamonds() {
     lastCardPlayed().number < nCardsCanGet
       ? lastCardPlayed().number
       : nCardsCanGet;
-      
+
   console.log(nDraw);
   if (nDraw > deck.value.length) {
     deck.value = deck.value.reverse();
@@ -69,28 +73,33 @@ function diamonds() {
 
 function clovers() {
   console.log("clovers");
+  doDmg();
 }
 
 function pikes() {
-  console.log("pikes");
+  actualEnemy.attack -= lastCardPlayed().number;
 }
 
 function move() {
   console.log(lastCardPlayed().symbol);
-  switch (lastCardPlayed().symbol) {
-    case "♥":
-      hearts();
-      break;
-    case "♦":
-      diamonds();
-      break;
-    case "♣":
-      clovers();
-      break;
-    case "♠":
-      pikes();
-      break;
+  if (lastCardPlayed().symbol !== actualEnemy.symbol) {
+    switch (lastCardPlayed().symbol) {
+      case "♥":
+        hearts();
+        break;
+      case "♦":
+        diamonds();
+        break;
+      case "♣":
+        clovers();
+        break;
+      case "♠":
+        pikes();
+        break;
+    }
   }
+
+  doDmg();
 }
 
 function onDrop(evt) {
@@ -103,7 +112,6 @@ function onDrop(evt) {
   playedCards.value = playedCards.value.concat(cardTransfer);
   move();
 }
-
 </script>
 
 <template>
