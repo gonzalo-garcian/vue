@@ -7,7 +7,7 @@ import { ref, computed, reactive } from "vue";
 let castle = ref(regicide.castle);
 let actualEnemy = castle.value.pop();
 let playedCards = ref([]);
-let discardPile = ref([{"number": "test", "symbol":"symbol"}]);//ref([]);
+let discardPile = ref([{ number: "test", symbol: "symbol" }]); //ref([]);
 let deck = ref(regicide.deck);
 let hand = ref(regicide.hand);
 
@@ -35,42 +35,62 @@ function lastCardPlayed() {
 }
 
 function hearts() {
-    console.log("Hearts")
-    console.log(lastCardPlayed().number)
-    console.log(discardPile.value.length)
+  console.log("Hearts");
   if (parseInt(lastCardPlayed().number) > discardPile.value.length) {
     discardPile.value = discardPile.value.reverse();
     deck.value = discardPile.value.concat(deck.value);
     discardPile.value = [];
   } else {
-    console.log("Enough to draw");
     deck.value = discardPile.value
-      .splice(-lastCardPlayed().number, lastCardPlayed().number)
+      .splice(-lastCardPlayed().number)
       .reverse()
       .concat(deck.value);
   }
 }
 
-function diamonds(){
+function diamonds() {
+  console.log("diamonds");
 
+  let nCardsCanGet = 8 - hand.value.length;
+  let nDraw =
+    lastCardPlayed().number < nCardsCanGet
+      ? lastCardPlayed().number
+      : nCardsCanGet;
+      
+  console.log(nDraw);
+  if (nDraw > deck.value.length) {
+    deck.value = deck.value.reverse();
+    hand.value = deck.value.concat(hand.value);
+    deck.value = [];
+  } else {
+    hand.value = deck.value.splice(-nDraw).reverse().concat(hand.value);
+  }
 }
 
-function clovers(){
-
+function clovers() {
+  console.log("clovers");
 }
 
-function pikes(){
-
+function pikes() {
+  console.log("pikes");
 }
 
 function move() {
-  let symbols = {
-    "♥": hearts(),
-    "♦": diamonds(),
-    "♣": clovers(),
-    "♠": pikes(),
-  };
-  symbols[lastCardPlayed.symbol];
+  console.log(lastCardPlayed().symbol);
+  switch (lastCardPlayed().symbol) {
+    case "♥":
+      hearts();
+      break;
+    case "♦":
+      diamonds();
+      break;
+    case "♣":
+      clovers();
+      break;
+    case "♠":
+      pikes();
+      break;
+  }
 }
 
 function onDrop(evt) {
@@ -83,6 +103,7 @@ function onDrop(evt) {
   playedCards.value = playedCards.value.concat(cardTransfer);
   move();
 }
+
 </script>
 
 <template>
