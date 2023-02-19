@@ -37,7 +37,7 @@ function doDmg() {
 function lastCardPlayed() {
   return playedCards.value.length > 0
     ? playedCards.value.at(-1)
-    : { number: "", symbol: "" };
+    : { number: "X", symbol: "X" };
 }
 
 function hearts() {
@@ -102,6 +102,10 @@ function move() {
     rcvDmg = true;
   }
   if (actualEnemy.hp <= 0) {
+    playedCards.value = playedCards.value.reverse();
+    discardPile.value = playedCards.value.concat(discardPile.value);
+    playedCards.value = [];
+    nEnemy.value++;
     actualEnemy = castle.value.pop();
   }
 }
@@ -134,36 +138,56 @@ function onDropDiscard(evt) {
     }
   }
 }
+draw(8);
+let nEnemy = ref(1);
 </script>
 
 <template>
-  <div class="grid grid-rows-3 gap-20">
-    <div class="grid grid-cols-3 gap-20 max-h-10">
-      <Card :number="actualEnemy.number" :symbol="actualEnemy.symbol">
-        {{ actualEnemy.hp }}
-        {{ actualEnemy.attack }}
-      </Card>
-      <Card
-        :number="lastCardPlayed().number"
-        :symbol="lastCardPlayed().symbol"
-        @drop="onDropPlay($event)"
-        @dragover.prevent
-        @dragenter.prevent
-      />
-      <Card
-        :number="discardPile.length.toString()"
-        @drop="onDropDiscard($event)"
-        @dragover.prevent
-        @dragenter.prevent
-      />
+  <div class="bg-white min-h-[45vh] min-w-[35%] rounded-[2rem] glass flex items-center justify-center">
+    <div class="grid grid-rows-2 gap-1 place-content-center m-[30px]">
+      <div class="grid grid-rows-2 place-items-center border-dashed border-2 border-violet-800 mb-7 pb-8">
+        <div class="grid grid-cols-4 gap-1 place-items-center">
+          <div>S {{ nEnemy }}</div>
+          <div>HP: {{actualEnemy.hp}}</div>
+          <div>ATTACK: {{actualEnemy.attack}}</div>
+          <div v-show="rcvDmg">
+            DR {{ actualEnemy.attack - actualDiscCards }}
+          </div>
+        </div>
+        <div class="grid grid-cols-3 gap-4 place-items-center">
+          <h1>Enemy</h1>
+          <h1>Played</h1>
+          <h1>Discard</h1>
+        </div>
+        <div class="grid grid-cols-3 gap-4 place-items-center">
+          <Card :number="actualEnemy.number" :symbol="actualEnemy.symbol">
+          </Card>
+          <Card
+            :number="lastCardPlayed().number"
+            :symbol="lastCardPlayed().symbol"
+            @drop="onDropPlay($event)"
+            @dragover.prevent
+            @dragenter.prevent
+          />
+          <Card
+            :number="discardPile.length.toString()"
+            @drop="onDropDiscard($event)"
+            @dragover.prevent
+            @dragenter.prevent
+          />
+        </div>
+      </div>
+      <CardList :cards="hand"/>
     </div>
-    <CardList :cards="hand" />
-
-    <button v-if="!playing" class="bg-gray-600" @click="draw(8);playing=true">Play!</button>
-  </div>
-  <div v-if="rcvDmg" class="p-10">
-    Damage remaining {{ actualEnemy.attack - actualDiscCards }}
   </div>
 </template>
 
-<style></style>
+<style>
+ .glass {
+  background: linear-gradient(
+    to right bottom,
+    rgba(255, 255, 255, 0.7),
+    rgba(255, 255, 255, 0.2)
+  );
+ }
+</style>

@@ -13,7 +13,7 @@ function startDrag(evt, item) {
 </script>
 
 <template>
-  <div class="grid grid-cols-7 gap-5">
+  <div class="grid grid-cols-4 gap-4 place-content-center border-dashed border-2 border-violet-800 p-4">
     <Card
       v-for="card in cards"
       :key="card.number + card.symbol"
