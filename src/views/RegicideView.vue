@@ -41,7 +41,6 @@ function lastCardPlayed() {
 }
 
 function hearts() {
-  ("Hearts");
   if (parseInt(lastCardPlayed().number) > discardPile.value.length) {
     discardPile.value = discardPile.value.reverse();
     deck.value = discardPile.value.concat(deck.value);
@@ -55,7 +54,6 @@ function hearts() {
 }
 
 function diamonds() {
-  ("diamonds");
 
   let nCardsCanGet = 8 - hand.value.length;
   let nDraw =
@@ -63,7 +61,6 @@ function diamonds() {
       ? lastCardPlayed().number
       : nCardsCanGet;
 
-  (nDraw);
   if (nDraw > deck.value.length) {
     deck.value = deck.value.reverse();
     hand.value = deck.value.concat(hand.value);
@@ -74,7 +71,6 @@ function diamonds() {
 }
 
 function clovers() {
-  ("clovers");
   doDmg();
 }
 
@@ -83,7 +79,6 @@ function pikes() {
 }
 
 function move() {
-  (lastCardPlayed().symbol);
   if (lastCardPlayed().symbol !== actualEnemy.symbol) {
     switch (lastCardPlayed().symbol) {
       case "♥":
@@ -118,7 +113,6 @@ function onDropPlay(evt) {
       hand.value.findIndex((item) => item.number + item.symbol === itemId),
       1
     );
-    (cardTransfer);
     playedCards.value = playedCards.value.concat(cardTransfer);
     move();
   }
@@ -132,12 +126,8 @@ function onDropDiscard(evt) {
       hand.value.findIndex((item) => item.number + item.symbol === itemId),
       1
     );
-    (cardTransfer);
     discardPile.value = discardPile.value.concat(cardTransfer);
     actualDiscCards.value += parseInt(discardPile.value.at(-1).number);
-    (discardPile.value.at(-1).number);
-    (actualDiscCards.value);
-    (actualEnemy.attack);
     if (actualDiscCards.value >= actualEnemy.attack) {
       rcvDmg = false;
       actualDiscCards.value = 0;
