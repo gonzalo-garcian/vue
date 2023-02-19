@@ -148,36 +148,52 @@
     ],
     "castle": [
         {
-            "number": "Q",
-            "symbol": "♠"
-        },
-        {
-            "number": "Q",
-            "symbol": "♥"
-        },
-        {
-            "number": "Q",
-            "symbol": "♦"
-        },
-        {
-            "number": "Q",
-            "symbol": "♣"
+            "number": "K",
+            "symbol": "♠",
+            "hp": 40,
+            "attack": 20
         },
         {
             "number": "K",
-            "symbol": "♠"
+            "symbol": "♥",
+            "hp": 40,
+            "attack": 20
         },
         {
             "number": "K",
-            "symbol": "♥"
+            "symbol": "♦",
+            "hp": 40,
+            "attack": 20
         },
         {
             "number": "K",
-            "symbol": "♦"
+            "symbol": "♣",
+            "hp": 40,
+            "attack": 20
         },
         {
-            "number": "K",
-            "symbol": "♣"
+            "number": "Q",
+            "symbol": "♠",
+            "hp": 30,
+            "attack": 15
+        },
+        {
+            "number": "Q",
+            "symbol": "♥",
+            "hp": 30,
+            "attack": 15
+        },
+        {
+            "number": "Q",
+            "symbol": "♦",
+            "hp": 30,
+            "attack": 15
+        },
+        {
+            "number": "Q",
+            "symbol": "♣",
+            "hp": 30,
+            "attack": 15
         },
         {
             "number": "J",
