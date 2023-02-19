@@ -41,7 +41,7 @@ function lastCardPlayed() {
 }
 
 function hearts() {
-  console.log("Hearts");
+  ("Hearts");
   if (parseInt(lastCardPlayed().number) > discardPile.value.length) {
     discardPile.value = discardPile.value.reverse();
     deck.value = discardPile.value.concat(deck.value);
@@ -55,7 +55,7 @@ function hearts() {
 }
 
 function diamonds() {
-  console.log("diamonds");
+  ("diamonds");
 
   let nCardsCanGet = 8 - hand.value.length;
   let nDraw =
@@ -63,7 +63,7 @@ function diamonds() {
       ? lastCardPlayed().number
       : nCardsCanGet;
 
-  console.log(nDraw);
+  (nDraw);
   if (nDraw > deck.value.length) {
     deck.value = deck.value.reverse();
     hand.value = deck.value.concat(hand.value);
@@ -74,7 +74,7 @@ function diamonds() {
 }
 
 function clovers() {
-  console.log("clovers");
+  ("clovers");
   doDmg();
 }
 
@@ -83,7 +83,7 @@ function pikes() {
 }
 
 function move() {
-  console.log(lastCardPlayed().symbol);
+  (lastCardPlayed().symbol);
   if (lastCardPlayed().symbol !== actualEnemy.symbol) {
     switch (lastCardPlayed().symbol) {
       case "♥":
@@ -118,7 +118,7 @@ function onDropPlay(evt) {
       hand.value.findIndex((item) => item.number + item.symbol === itemId),
       1
     );
-    console.log(cardTransfer);
+    (cardTransfer);
     playedCards.value = playedCards.value.concat(cardTransfer);
     move();
   }
@@ -132,12 +132,12 @@ function onDropDiscard(evt) {
       hand.value.findIndex((item) => item.number + item.symbol === itemId),
       1
     );
-    console.log(cardTransfer);
+    (cardTransfer);
     discardPile.value = discardPile.value.concat(cardTransfer);
     actualDiscCards.value += parseInt(discardPile.value.at(-1).number);
-    console.log(discardPile.value.at(-1).number);
-    console.log(actualDiscCards.value);
-    console.log(actualEnemy.attack);
+    (discardPile.value.at(-1).number);
+    (actualDiscCards.value);
+    (actualEnemy.attack);
     if (actualDiscCards.value >= actualEnemy.attack) {
       rcvDmg = false;
       actualDiscCards.value = 0;
