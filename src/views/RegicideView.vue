@@ -2,6 +2,7 @@
 import CardList from "@/components/cards/CardList.vue";
 import Card from "@/components/cards/Card.vue";
 import regicide from "@/db/regicide.json";
+import { version } from "@/../package.json";
 import { ref } from "vue";
 
 let castle = ref(regicide.castle);
@@ -11,7 +12,6 @@ let discardPile = ref([]);
 let deck = ref(regicide.deck);
 let hand = ref(regicide.hand);
 let rcvDmg = false;
-let playing = ref(false);
 
 function shuffleDeck() {
   for (let i = deck.value.length - 1; i > 0; i--) {
@@ -27,7 +27,6 @@ function draw(n) {
   shuffleDeck(deck.value);
   hand.value = [];
   hand.value = deck.value.splice(-n, n);
-  //playedCards.value = playedCards.value.concat(deck.value.pop());
 }
 
 function doDmg() {
@@ -102,6 +101,9 @@ function move() {
     rcvDmg = true;
   }
   if (actualEnemy.hp <= 0) {
+    if(actualEnemy.hp === 0){
+      playedCards.value.unshift({"number": actualEnemy.attack, "symbol": actualEnemy.symbol})
+    }
     playedCards.value = playedCards.value.reverse();
     discardPile.value = playedCards.value.concat(discardPile.value);
     playedCards.value = [];
@@ -143,7 +145,7 @@ let nEnemy = ref(1);
 </script>
 
 <template>
-  <div class="bg-white min-h-[45vh] min-w-[35%] rounded-[2rem] glass flex items-center justify-center">
+  <div class="min-h-[45vh] min-w-[35%] rounded-[2rem] glass flex items-center justify-center">
     <div class="grid grid-rows-2 gap-1 place-content-center m-[30px]">
       <div class="grid grid-rows-2 place-items-center border-dashed border-2 border-violet-800 mb-7 pb-8">
         <div class="grid grid-cols-4 gap-1 place-items-center">
@@ -180,6 +182,7 @@ let nEnemy = ref(1);
       <CardList :cards="hand"/>
     </div>
   </div>
+  <h1 class="p-6"> v{{ version }}</h1>
 </template>
 
 <style>
